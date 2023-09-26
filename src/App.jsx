@@ -25,7 +25,7 @@ function App() {
 
    <Navbar></Navbar>
       <Routes>
-        <Route path="/" element={<Home></Home>} />
+        <Route path="/" element={<div><Home></Home><Footer></Footer></div>} />
         <Route path="/contact" element={<Contact></Contact>} />
        
         
@@ -39,7 +39,7 @@ function App() {
 
         <Route path="*" element={<Error />} />
     </Routes>
-    <Footer></Footer>
+    
    </>
   )
 }

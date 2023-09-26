@@ -71,7 +71,7 @@ const [closeMenuMobile , setCloseMenuMObile] = useState(false)
             <div  className='relative flex justify-between px-4 items-center lg:justify-start  gap-x-10  '>
                 {/* logo div */}
                 <div>
-                  <Link to='/'> <img className='md:ml-1 w-[160px] h-[85px] my-3 lg:my-0' src={logo} alt="logo" /></Link> 
+                  <Link to='/'> <img className='md:ml-1 w-[120px] h-[85px] my-3 lg:my-0' src={logo} alt="logo" /></Link> 
                 </div>
                 {/* links div */}
                 <div className='hidden lg:flex '>

@@ -19,7 +19,7 @@ import homeCardImg3 from '../../images/home/home-card-img-3.jpg'
 import homeCardImg4 from '../../images/home/home-card-img-4.jpg'
 
 // recognition img
-import homeRecoDate from '../../images/home/home-card-img-5-speech.jpg'
+import homeRecoDate from '../../images/home/effective-comm-1.png'
 import homeRecoDate2 from '../../images/home/home-card-img-4-speech.jpg'
 import homeReco2 from '../../images/home/home-card-img-3-speech.jpg'
 
@@ -37,7 +37,7 @@ import homeUserIcon from '../../images/home/home-user-icon.svg'
 
 const logos = [
 
-  { image: homeClient1  },
+  { image: homeClient1 },
   { image:homeClient2 },
   { image: homeClient4 },
   { image: homeClient3 },
@@ -193,7 +193,7 @@ const Home = () => {
           {/* first starts */}
           <div data-aos="fade-up"  className=' flex flex-col md:flex-row items-center justify-center gap-5 md:gap-10 lg:gap-20 '>
 
-            <img className='md:w-[336px] lg:w-[410px] xl:w-[500px]' src={homeRecoDate} alt="" />
+            <img className='md:w-[336px] lg:w-[400px] xl:w-[350px] rounded-[100%]' src={homeRecoDate} alt="" />
 
             <div className=' flex flex-col items-center justify-center text-center md:text-start md:items-start md:justify-start lg:w-[46%]'>
               <h3 className='text-[28px] md:text-[36px] font-bold my-6'>Effective Communication:</h3>

@@ -169,7 +169,7 @@ const Articulation = () => {
   
    {/* blue div */}
       {/* box 2 */}
-      <div className='flex items-center justify-center mt-14'>
+      <div className='flex items-center justify-center mt-14 mb-10'>
         <div className='emerging-tech-white-div-drop-shadow bg-[#023267] flex w-full flex-col items-start justify-star gap-2 text-start p-5 mx-3 sm:w-[80%] lg:w-[78%] rounded-[10px] text-white'>
           <p className='text-[22px] sm:text-[23px] text-center sm:text-start '>Articulation exercises improve your speech precision and clarity. Receive instant AI-guided feedback for enhanced articulation and confident communication. To perform this exercise - Begin by thinking about provided question or image for 10 seconds. When ready, click "start" to activate the microphone and speak for approximately 30 seconds. Your spoken words will appear in text format for your review. Click "generate AI response" to receive helpful insights and corrections, empowering you to refine your articulation and speaking skills with AI guidance. Click on "Next" button to change question and image.</p>
 
