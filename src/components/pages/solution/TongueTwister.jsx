@@ -1,4 +1,4 @@
-import React , {useEffect} from 'react'
+import React , {useState , useEffect} from 'react'
 import Aos from "aos";
 import "aos/dist/aos.css";
 import tickIcon from '../../../images/solution/custom-app/tick.svg'
@@ -8,13 +8,18 @@ import twIcon from '../../../images/solution/custom-app/tw.svg'
 import instaIcon from '../../../images/solution/custom-app/insta.svg'
 import inIcon from '../../../images/solution/custom-app/in.svg'
 
+// dropdown
+import { Fragment } from 'react'
+import { Menu, Transition } from '@headlessui/react'
+import { ChevronDownIcon } from '@heroicons/react/20/solid'
+
 const TongueTwister = () => {
 
   useEffect(()=>{
     Aos.init({duration : 2000})
   } , [])
 
-  const tongueTw = [
+  const englishTongueTw = [
     "How can a clam cram in a clean cream can?",
     "Fuzzy Wuzzy was a bear. Fuzzy Wuzzy had no hair. Fuzzy Wuzzy wasn't very fuzzy, was he?",
     "She sells seashells by the seashore.",
@@ -38,17 +43,39 @@ const TongueTwister = () => {
     "Nine nice night nurses nursing nicely.",
     "Four fine fresh fish for you.",
     "Eddie edited it.",
-
-
-
     // hard
     "Pad kid poured curd pulled cod",
     // "To sit in solemn silence in a dull, dark dock in a pestilential prison with a life-long lock, awaiting the sensation of a short, sharp shock from a cheap and chippy chopper with a big, black block"
 
-
-
-
   ]
+  const hindiTongueTw = [
+    "कच्चा पापड़, पक्का पापड़",
+    "समझ समझ के समझ को समझो, समझ समझना भी एक समझ है ",
+    "मर हम भी गए मरहम के लिए, मरहम ना मिला हम दम से गए, हमदम के लिए, हमदम न मिला",
+    "पके पेड़ पर पका पपीता, पका पेड़ या पका पपीता, पके पेड़ को पकड़े पिंकू, पिंकू पकड़े पका पपीता ",
+    "लपक बबुलिया लपक, अब ना लपकबे तो लपकबे कब ",
+    "पीठ ऊँची उंट की उह्चई से नहीं होती, होती ही है होती ही है पीठ ऊँची उंट की",
+    "नदी किनारे है किराने की दूकान ",
+    "चंदा चमके चम्-चम् चीखे चौक्काना चोर, चीटी चाटे चीनी, चटोरी चीनी खोर ",
+    "पीतल के पतीले में पपीता पीला-पीला",
+    "डबल बबल गम बबल डबल( ये तो “देखन में छोटन लगे, घाव करे गंभीर” वाला केस लगता है) ",
+    "खड़क सिंह के खड़कने से खड़कती हैं खिड़कियां",
+    "मदन मोहन मालविया मद्रास में मछली मारते-मारते मरे "
+  ]
+
+   const [changeLanguage , setChangeLanguage] = useState(englishTongueTw)
+
+  const handleEnglishLanguage = ()=>{
+    setChangeLanguage(englishTongueTw)
+  }
+
+  const handleHindiLanguage = ()=>{
+    setChangeLanguage(hindiTongueTw)
+  }
+
+  function classNames(...classes) {
+    return classes.filter(Boolean).join(' ')
+  }
 
   return (
     <>
@@ -72,14 +99,63 @@ const TongueTwister = () => {
         </div>
       </div>
 
+      <Menu as="div" className="relative ml-44 mt-10 inline-block text-left">
+      <div>
+        <Menu.Button className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+          Select Language
+          <ChevronDownIcon className="-mr-1 h-5 w-5 text-gray-400" aria-hidden="true" />
+        </Menu.Button>
+      </div>
 
+      <Transition
+        as={Fragment}
+        enter="transition ease-out duration-100"
+        enterFrom="transform opacity-0 scale-95"
+        enterTo="transform opacity-100 scale-100"
+        leave="transition ease-in duration-75"
+        leaveFrom="transform opacity-100 scale-100"
+        leaveTo="transform opacity-0 scale-95"
+      >
+        <Menu.Items className="absolute z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+          <div className="py-1">
+            <Menu.Item>
+              {({ active }) => (
+                <p
+                 onClick={handleEnglishLanguage}
+                  className={classNames(
+                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                    'block px-4 py-2 text-sm'
+                  )}
+                >
+                 English
+                </p>
+              )}
+            </Menu.Item>
+            <Menu.Item>
+              {({ active }) => (
+                <p
+                  onClick={handleHindiLanguage}
+                  className={classNames(
+                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                    'block px-4 py-2 text-sm'
+                  )}
+                >
+                  Hindi
+                </p>
+              )}
+            </Menu.Item>
+           
+          </div>
+        </Menu.Items>
+      </Transition>
+    </Menu>
 
       {/* tongue twisters starts */}
 
       <div className=' p-3 sm:px-5 py-4 sm:mx-10 md:mx-20 lg:mx-40 mt-10 text-[22px] leading-9'>
         
         {
-          tongueTw.map((item , i)=>
+          changeLanguage.map((item , i)=>
             (
 
               <p key={i} className='my-6 p-5 speech-to-text-drop-shadow'>  {item}</p>

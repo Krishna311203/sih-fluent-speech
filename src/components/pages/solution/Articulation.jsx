@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import SpeechToText from './SpeechToText'
 
+import img0 from '../../../images/articulation/0.jpeg'
 import img1 from '../../../images/articulation/1.jpg'
 import img2 from '../../../images/articulation/2.jpg'
 import img3 from '../../../images/articulation/3.jpg'
@@ -32,6 +33,7 @@ const Articulation = () => {
     const [isImageLoad, setisImageLoad] = useState(false)
     // images array
     const image = [
+        img0,
         img1,
         img2 ,
         img3 ,
@@ -49,7 +51,7 @@ const Articulation = () => {
 
     const [randomImageNO , setRandomImageNO] = useState(Math.floor(Math.random() * ( (image.length - 1) - 0 + 1) + 0))
 
-    const [randomQueNO , setRandomQueNO] = useState(Math.floor(Math.random() * ( (question.length - 1) - 0 + 1) + 0))
+    const [randomQueNO , setRandomQueNO] = useState(0)
 
 
     const [thinkTimer, setThinkTimer] = useState(40)
@@ -57,7 +59,7 @@ const Articulation = () => {
 
 
 
-    const handleImgLoaded = () => {
+    const handleImgLoaded = (value) => {
         // if (thinkTimer >= 1) {
         //     const interval =  setInterval(() => {
         //         setThinkTimer(prev => prev - 1)
@@ -65,43 +67,27 @@ const Articulation = () => {
 
         //     return () => clearInterval(interval);
         // }
+        console.log(value)
         setisImageLoad(true)
-        console.log("img load : " + isImageLoad)
+       
 
     }
 
-    // think timmer
-    useEffect(() => {  
-       
-      
-           const  intervalId = setInterval(() => {
+
+
+
+  const handleStartTimeFunction = () =>{
+            const intervalId = setInterval(() => {
+             
+              if(startArticulation){
                 setThinkTimer(prev => prev - 1);
-            }, 1000);
-        
+              }
 
-            // Clean up the interval when the component unmounts or when timer2 reaches 0
-            return () => {clearInterval(intervalId) 
-                console.log("clenup")}
-    }, []);
-
-
-
-
-    //    useEffect( () => {
-         
-    //     if ( thinkTimer === 0 ) {
-          
-    //         const intervalIdSecond = setInterval(() => {
-    //             console.log("not")
-    //             setSpeakTimer(prev => prev - 1);
-    //         }, 1000);
-
-    //         // Clean up the interval when the component unmounts or when timer2 reaches 0
-    //         return () => clearInterval(intervalIdSecond);
-    //     }
-         
-    //    }, [thinkTimer])
-       
+                     return () => {clearInterval(intervalId) 
+                  console.log("clenup")}
+               
+            }, 1000) 
+  }
        
  
 
@@ -110,7 +96,8 @@ const Articulation = () => {
       
         setThinkTimer(40)
         setRandomImageNO(Math.floor(Math.random() * (image.length - 0 + 1) + 0))
-        setRandomQueNO(Math.floor(Math.random() * ( (question.length - 1) - 0 + 1) + 0))
+      
+        setRandomQueNO(prev => prev + 1)
         // setSpeakTimer(30)
         // setResetSpeechToText(prev=>!prev)
     
@@ -125,7 +112,7 @@ const Articulation = () => {
         <>
         
 
-{ startArticulation === "false" ? <div onClick={()=>{setStartArticulation("true");}} className='cursor-pointer articulation-div-drop-shadow flex items-center justify-center mt-12 '><div className='flex items-center justify-center bg-blue-400 h-[40vh] w-[50vw] rounded-[12px]'>
+{ startArticulation === "false" ? <div onClick={()=>{setStartArticulation("true"); handleStartTimeFunction()}} className='cursor-pointer articulation-div-drop-shadow flex items-center justify-center mt-12 '><div className='flex items-center justify-center bg-blue-400 h-[40vh] w-[50vw] rounded-[12px]'>
     <button className='font-bold text-[30px] text-white' >Start Articulation Exercise</button>
  </div></div> : null}
 
@@ -139,7 +126,7 @@ const Articulation = () => {
 
                      <p className='font-bold text-[22px]'>or</p>
                     {/* image */}
-                    <img className='rounded-[12px] lg:h-[350px] articulation-image-div-drop-shadow' onLoad={handleImgLoaded} src={image[randomImageNO]} alt="img" />
+                    <img className='rounded-[12px] lg:h-[350px] articulation-image-div-drop-shadow' onLoad={()=>handleImgLoaded(image[randomImageNO])} src={image[randomImageNO]} alt="" />
 
                     {/* time section */}
                     <div className='flex flex-col items-center justify-center gap-3'>
