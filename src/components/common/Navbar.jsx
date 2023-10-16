@@ -96,6 +96,9 @@ const [closeMenuMobile , setCloseMenuMObile] = useState(false)
                             </ul>
                         </div> }
                           {/* home drop down menues ends */}</li>
+
+
+                          <li><Link to="/courses">Courses</Link></li>
                       
                         <li><Link to="/contact">Contact Us</Link></li>
                     </ul>
