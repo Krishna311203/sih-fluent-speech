@@ -31,7 +31,7 @@ function App() {
        
         
         <Route path="/regular-meet" element={<RegularMeet></RegularMeet>} />
-        <Route path="/courses" element={<Courses></Courses>} />
+        {/* <Route path="/courses" element={<Courses></Courses>} /> */}
         
         <Route path="/tongue-twister" element={<TongueTwister></TongueTwister>} />
         <Route path="/breathing-exercise" element={<Breathing></Breathing>} />
