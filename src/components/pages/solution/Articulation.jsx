@@ -112,8 +112,8 @@ const Articulation = () => {
         <>
         
 
-{ startArticulation === "false" ? <div onClick={()=>{setStartArticulation("true"); handleStartTimeFunction()}} className='cursor-pointer articulation-div-drop-shadow flex items-center justify-center mt-12 '><div className='flex items-center justify-center bg-blue-400 h-[40vh] w-[50vw] rounded-[12px]'>
-    <button className='font-bold text-[30px] text-white' >Start Articulation Exercise</button>
+{ startArticulation === "false" ? <div onClick={()=>{setStartArticulation("true"); handleStartTimeFunction()}} className='cursor-pointer articulation-div-drop-shadow flex items-center justify-center mt-12 '><div className='flex items-center justify-center bg-blue-400 px-5 h-[40vh] w-[50vw] rounded-[12px]'>
+    <button className='font-bold text-[25px] text-white' >Start Articulation Exercise</button>
  </div></div> : null}
 
 {
